@@ -53,7 +53,6 @@ export default function GuestPortal() {
             try {
               const updated = JSON.parse(e.target.value);
               alert('Guest list updated (demo only).');
-              // In real use, update guestData via backend or context
             } catch {
               alert('Invalid JSON');
             }
@@ -93,7 +92,6 @@ export default function GuestPortal() {
       <div className="max-w-4xl mx-auto mt-4 px-4 transition-opacity animate-fade-in">
         <h1 className="text-2xl font-bold mb-2">Hi {guest.name}! 👋</h1>
         <p className="mb-6">Welcome to Coachella Weekend Two – April 18–21!</p>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="border p-4 rounded-xl shadow">
             <h2 className="font-bold mb-2">🏠 <a href="https://www.google.com/maps/place/1+St.+Petersburg+Court,+Rancho+Mirage,+CA+92270" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">House Info</a></h2>
