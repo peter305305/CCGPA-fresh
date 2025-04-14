@@ -24,7 +24,7 @@ const guestData = {
   }
 };
 
-function GuestPortal() {
+export default function GuestPortal() {
   const [nameInput, setNameInput] = useState("");
   const [guest, setGuest] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -53,6 +53,7 @@ function GuestPortal() {
             try {
               const updated = JSON.parse(e.target.value);
               alert('Guest list updated (demo only).');
+              // In real use, update guestData via backend or context
             } catch {
               alert('Invalid JSON');
             }
@@ -65,7 +66,7 @@ function GuestPortal() {
   if (!guest) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center px-4">
-        <div className="w-full max-w-md border p-6 rounded-xl shadow-xl bg-white bg-opacity-90 transition-all animate-fade-in">
+        <div className="w-full max-w-md border p-6 rounded-xl shadow-xl bg-white bg-opacity-90 transition-all animate-fade-in sm:mx-auto">
           <h2 className="text-xl font-semibold mb-4 text-center">Welcome to Coachella 🌴</h2>
           <input
             placeholder="Enter your first name"
@@ -81,9 +82,9 @@ function GuestPortal() {
 
   return (
     <>
-      <nav className="bg-black text-white px-6 py-3 mb-4 flex justify-between items-center">
+      <nav className="bg-black text-white px-4 py-3 mb-4 flex flex-col sm:flex-row sm:justify-between items-center space-y-2 sm:space-y-0">
         <div className="font-bold text-lg">Coachella Portal</div>
-        <div className="space-x-4 text-sm">
+        <div className="space-x-4 text-sm flex flex-wrap justify-center">
           <a href="/" className="hover:underline">Home</a>
           <a href="/house-info" className="hover:underline">House Info</a>
           <a href="/weather" className="hover:underline">Weather</a>
@@ -92,7 +93,8 @@ function GuestPortal() {
       <div className="max-w-4xl mx-auto mt-4 px-4 transition-opacity animate-fade-in">
         <h1 className="text-2xl font-bold mb-2">Hi {guest.name}! 👋</h1>
         <p className="mb-6">Welcome to Coachella Weekend Two – April 18–21!</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="border p-4 rounded-xl shadow">
             <h2 className="font-bold mb-2">🏠 <a href="https://www.google.com/maps/place/1+St.+Petersburg+Court,+Rancho+Mirage,+CA+92270" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">House Info</a></h2>
           </div>
@@ -125,5 +127,3 @@ function GuestPortal() {
     </>
   );
 }
-
-export default GuestPortal;
