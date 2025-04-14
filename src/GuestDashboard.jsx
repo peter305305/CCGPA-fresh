@@ -11,16 +11,11 @@ export default function GuestDashboard({ guest }) {
       <p className="mb-6">Welcome to Coachella Weekend Two – April 18–21!</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="border p-4 rounded-xl shadow">
-          <h2 className="font-bold mb-2">🏠 House</h2>
-          <a
-            href="https://www.google.com/maps/place/1+St.+Petersburg+Court,+Rancho+Mirage,+CA+92270"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 underline"
-          >
-            Open in Google Maps
-          </a>
+        <div
+          className="border p-6 rounded-xl shadow cursor-pointer text-center text-lg font-bold"
+          onClick={() => window.location.href = "/house-info"}
+        >
+          🏠 House Info
         </div>
 
         <div className="border p-4 rounded-xl shadow">
@@ -29,14 +24,12 @@ export default function GuestDashboard({ guest }) {
         </div>
 
         <div
-          className="border p-4 rounded-xl shadow cursor-pointer text-center"
+          className="border p-6 rounded-xl shadow cursor-pointer text-center text-lg font-bold"
           onClick={() => setShowServices(!showServices)}
         >
-          <h2 className="font-bold text-lg">🧼 Services</h2>
-          {!showServices ? (
-            <p className="text-sm">Click to view options</p>
-          ) : (
-            <div className="space-y-2 mt-2 text-sm">
+          🧼 Services
+          {showServices && (
+            <div className="space-y-2 mt-4 text-sm font-normal">
               <div className="border rounded p-2">🧺 Laundry – TBD</div>
               <div className="border rounded p-2">
                 🧹 Cleaning<br />Cleaning Hours: 3 PM – 7 PM daily<br />(Please leave your room door unlocked during this window)
@@ -63,9 +56,11 @@ export default function GuestDashboard({ guest }) {
           <a href="/weather" className="text-blue-600 underline">Check weather forecast</a>
         </div>
 
-        <div className="border p-4 rounded-xl shadow col-span-full">
-          <h2 className="font-bold mb-2">📲 Contact</h2>
-          <p>Yasemin Kahveci<br />Text/Call: (786) 742-2111</p>
+        <div
+          className="border p-6 rounded-xl shadow col-span-full text-center text-lg font-bold cursor-pointer"
+          onClick={() => window.location.href = "sms:+17867422111"}
+        >
+          📲 Need something else?
         </div>
       </div>
     </div>
