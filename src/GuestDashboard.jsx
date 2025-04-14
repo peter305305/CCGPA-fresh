@@ -12,7 +12,7 @@ export default function GuestDashboard({ guest }) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div
-          className="border p-6 rounded-xl shadow cursor-pointer text-center text-lg font-bold"
+          className="border p-6 rounded-xl shadow cursor-pointer text-center text-lg font-bold flex items-center justify-center h-32"
           onClick={() => window.location.href = "/house-info"}
         >
           🏠 House Info
@@ -24,17 +24,17 @@ export default function GuestDashboard({ guest }) {
         </div>
 
         <div
-          className="border p-6 rounded-xl shadow cursor-pointer text-center text-lg font-bold"
+          className="border p-6 rounded-xl shadow cursor-pointer text-center text-lg font-bold flex flex-col items-center justify-center"
           onClick={() => setShowServices(!showServices)}
         >
           🧼 Services
           {showServices && (
-            <div className="space-y-2 mt-4 text-sm font-normal">
-              <div className="border rounded p-2">🧺 Laundry – TBD</div>
-              <div className="border rounded p-2">
+            <div className="space-y-2 mt-4 text-sm font-normal w-full">
+              <div className="border rounded p-2 w-full">🧺 Laundry – TBD</div>
+              <div className="border rounded p-2 w-full">
                 🧹 Cleaning<br />Cleaning Hours: 3 PM – 7 PM daily<br />(Please leave your room door unlocked during this window)
               </div>
-              <div className="border rounded p-2">
+              <div className="border rounded p-2 w-full">
                 <a href="sms:+17867422111" className="text-blue-600 underline">📲 Need another request?</a>
               </div>
             </div>
@@ -48,16 +48,16 @@ export default function GuestDashboard({ guest }) {
 
         <div className="border p-4 rounded-xl shadow">
           <h2 className="font-bold mb-2">🚐 Transport</h2>
-          <p>Party Bus: 3 PM<br />Private Car: <a href="sms:+17867422111" className="text-blue-600 underline">Text Yasemin</a> 1hr ahead</p>
+          <p>Party Bus: 3 PM<br />Private Car: <a href="sms:+17867422111" className="text-blue-600 underline">Click here!</a> 1hr ahead</p>
         </div>
 
         <div className="border p-4 rounded-xl shadow">
           <h2 className="font-bold mb-2">☀️ Weather</h2>
-          <a href="/weather" className="text-blue-600 underline">Check weather forecast</a>
+          <a href="https://weather.com/weather/tenday/l/92270" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Check weather forecast</a>
         </div>
 
         <div
-          className="border p-6 rounded-xl shadow col-span-full text-center text-lg font-bold cursor-pointer"
+          className="border p-6 rounded-xl shadow col-span-full text-center text-lg font-bold cursor-pointer flex items-center justify-center h-32"
           onClick={() => window.location.href = "sms:+17867422111"}
         >
           📲 Need something else?
