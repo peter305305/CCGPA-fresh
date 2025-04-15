@@ -5,26 +5,20 @@ import AdminDashboard from './AdminDashboard';
 import Weather from './Weather';
 import HouseInfo from './HouseInfo';
 
-const guestData = {
-  sarah: { name: "Sarah", room: "Bedroom 3", arrival: "Apr 18", departure: "Apr 21" },
-  alex: { name: "Alex", room: "Bedroom 1", arrival: "Apr 18", departure: "Apr 22" },
-  test: { name: "TEST", room: "Test Room", arrival: "Apr 18", departure: "Apr 21" }
-};
-
 function Landing({ setUser, setIsAdmin }) {
   const [input, setInput] = useState('');
   const navigate = useNavigate();
 
   function handleLogin() {
     const name = input.toLowerCase().trim();
+
     if (name === 'admin') {
       setIsAdmin(true);
       navigate('/admin');
-    } else if (guestData[name]) {
-      setUser({ key: name, ...guestData[name] });
-      navigate('/dashboard');
     } else {
-      alert("Guest not found.");
+      // ✅ Trust Firestore guest key
+      setUser({ key: name });
+      navigate('/dashboard');
     }
   }
 
@@ -55,7 +49,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Landing setUser={setUser} setIsAdmin={setIsAdmin} />} />
         <Route path="/dashboard" element={<GuestDashboard guest={user} />} />
-        <Route path="/admin" element={<AdminDashboard guests={guestData} />} />
+        <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/weather" element={<Weather />} />
         <Route path="/house-info" element={<HouseInfo />} />
       </Routes>
