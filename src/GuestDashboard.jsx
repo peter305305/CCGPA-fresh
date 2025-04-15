@@ -81,6 +81,12 @@ export default function GuestDashboard({ guest }) {
           <a href="https://weather.com/weather/tenday/l/92270" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Check weather forecast</a>
         </div>
 
+        <div className="border p-6 rounded-xl shadow cursor-pointer text-center text-lg font-bold flex items-center justify-center h-32 col-span-full hover:shadow-lg hover:scale-[1.02] transition-transform duration-300"
+          onClick={() => window.location.href = "/set-times"}
+        >
+          🎶 Set Times
+        </div>
+
         <div
           className="border p-6 rounded-xl shadow col-span-full text-center text-lg font-bold cursor-pointer flex items-center justify-center h-32 hover:shadow-lg hover:scale-[1.02] transition-transform duration-300"
           onClick={() => window.location.href = "sms:+17867422111"}
