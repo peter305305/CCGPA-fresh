@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import GuestDashboard from './GuestDashboard';
+import AdminDashboard from './AdminDashboard';
 import Weather from './Weather';
 import HouseInfo from './HouseInfo';
 
@@ -10,15 +11,18 @@ const guestData = {
   test: { name: "TEST", room: "Test Room", arrival: "Apr 18", departure: "Apr 21" }
 };
 
-function Landing({ setGuest }) {
+function Landing({ setUser, setIsAdmin }) {
   const [input, setInput] = useState('');
   const navigate = useNavigate();
 
   function handleLogin() {
     const name = input.toLowerCase().trim();
-    if (guestData[name]) {
-      setGuest(guestData[name]);
-      navigate("/dashboard");
+    if (name === 'admin') {
+      setIsAdmin(true);
+      navigate('/admin');
+    } else if (guestData[name]) {
+      setUser({ key: name, ...guestData[name] });
+      navigate('/dashboard');
     } else {
       alert("Guest not found.");
     }
@@ -43,13 +47,15 @@ function Landing({ setGuest }) {
 }
 
 export default function App() {
-  const [guest, setGuest] = useState(null);
+  const [user, setUser] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Landing setGuest={setGuest} />} />
-        <Route path="/dashboard" element={<GuestDashboard guest={guest} />} />
+        <Route path="/" element={<Landing setUser={setUser} setIsAdmin={setIsAdmin} />} />
+        <Route path="/dashboard" element={<GuestDashboard guest={user} />} />
+        <Route path="/admin" element={<AdminDashboard guests={guestData} />} />
         <Route path="/weather" element={<Weather />} />
         <Route path="/house-info" element={<HouseInfo />} />
       </Routes>
