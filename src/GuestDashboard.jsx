@@ -22,6 +22,10 @@ export default function GuestDashboard({ guest }) {
 
   if (!firestoreGuest) return <div className="p-6">Guest not found.</div>;
 
+  const renderField = (value) => (
+    value ? value : <span className="italic text-red-600">Please check back later</span>
+  );
+
   return (
     <div className="p-6 animate-fade">
       <h1 className="text-2xl font-bold mb-4">Hi {firestoreGuest.name || 'Guest'}! 👋</h1>
@@ -38,9 +42,9 @@ export default function GuestDashboard({ guest }) {
         <div className="border p-4 rounded-xl shadow hover:shadow-md transition duration-300">
           <h2 className="font-bold mb-2">🛏 Your Room</h2>
           <p>
-            {firestoreGuest.room || "No room info"}<br />
-            Arrival: {firestoreGuest.arrival || "N/A"}<br />
-            Departure: {firestoreGuest.departure || "N/A"}
+            {renderField(firestoreGuest.room)}<br />
+            Arrival: {renderField(firestoreGuest.arrival)}<br />
+            Departure: {renderField(firestoreGuest.departure)}
           </p>
         </div>
 
