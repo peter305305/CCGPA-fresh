@@ -1,13 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { db } from './firebase';
+import { doc, getDoc } from 'firebase/firestore';
 
 export default function GuestDashboard({ guest }) {
+  const [firestoreGuest, setFirestoreGuest] = useState(null);
   const [showServices, setShowServices] = useState(false);
 
-  if (!guest) return <div className="p-6">Guest not found.</div>;
+  useEffect(() => {
+    async function fetchGuest() {
+      if (!guest?.key) return;
+      const docRef = doc(db, 'guests', guest.key);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setFirestoreGuest(docSnap.data());
+      } else {
+        setFirestoreGuest(null);
+      }
+    }
+    fetchGuest();
+  }, [guest]);
+
+  if (!firestoreGuest) return <div className="p-6">Guest not found.</div>;
 
   return (
     <div className="p-6 animate-fade">
-      <h1 className="text-2xl font-bold mb-4">Hi {guest.name}! 👋</h1>
+      <h1 className="text-2xl font-bold mb-4">Hi {firestoreGuest.name || 'Guest'}! 👋</h1>
       <p className="mb-6">Welcome to Coachella Weekend Two – April 18–21!</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -20,7 +37,11 @@ export default function GuestDashboard({ guest }) {
 
         <div className="border p-4 rounded-xl shadow hover:shadow-md transition duration-300">
           <h2 className="font-bold mb-2">🛏 Your Room</h2>
-          <p>{guest.room}<br />Arrival: {guest.arrival}<br />Departure: {guest.departure}</p>
+          <p>
+            {firestoreGuest.room || "No room info"}<br />
+            Arrival: {firestoreGuest.arrival || "N/A"}<br />
+            Departure: {firestoreGuest.departure || "N/A"}
+          </p>
         </div>
 
         <div
