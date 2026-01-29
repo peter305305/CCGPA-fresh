@@ -9,15 +9,16 @@ const FORM_URL =
 
 // TODO: Replace these placeholders with actual Google Form entry IDs.
 const ENTRY_IDS = {
-  fullName: 'entry.0000000000',
-  roomNumber: 'entry.0000000001',
-  dietaryRestrictions: 'entry.0000000002',
+  fullName: 'entry.2144589778',
+  roomNumber: 'entry.474418241',
+  dietaryRestrictions: 'entry.245339800',
 };
 
 export default function Dining({ guest }) {
   const [firestoreGuest, setFirestoreGuest] = useState(null);
   const [restrictions, setRestrictions] = useState('');
   const [status, setStatus] = useState('idle');
+  const [showToast, setShowToast] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -66,7 +67,11 @@ export default function Dining({ guest }) {
         body: payload,
       });
       setStatus('submitted');
+      setShowToast(true);
       setRestrictions('');
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 2000);
     } catch (error) {
       setStatus('error');
     }
@@ -159,6 +164,12 @@ export default function Dining({ guest }) {
             </div>
           </form>
         </div>
+
+        {showToast && (
+          <div className="fixed bottom-6 right-6 z-50 rounded-2xl border border-gold-400/40 bg-black/70 px-5 py-4 text-sm text-white shadow-luxe backdrop-blur-md">
+            Dietary request received. Returning to lobby...
+          </div>
+        )}
       </div>
     </div>
   );
