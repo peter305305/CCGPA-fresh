@@ -1,35 +1,46 @@
-import { useNavigate } from 'react-router-dom';
 import TopNav from './TopNav';
 
 export default function SetTimes() {
-  const navigate = useNavigate();
-
   return (
     <div className="page-shell animate-fade">
-      <div className="page-container text-center">
+      <div className="page-container">
         <TopNav />
-        <div className="mb-8">
+        <div className="mb-8 text-center">
           <h1 className="page-title">🎶 Set Times</h1>
-          <p className="page-subtitle">Pick a day to see the latest lineup.</p>
+          <p className="page-subtitle">Scroll for the full weekend lineup.</p>
         </div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <div
-            onClick={() => navigate('/set-times/friday')}
-            className="card-interactive cursor-pointer px-6 py-8 text-xl font-semibold"
-          >
-            Friday
+        <div className="space-y-8">
+          <div className="card overflow-hidden">
+            <div className="border-b border-white/10 bg-white/5 px-6 py-4 text-center">
+              <h2 className="text-xl font-semibold">Friday</h2>
+            </div>
+            <img
+              src="/friday.jpg"
+              alt="Friday set times"
+              className="w-full"
+            />
           </div>
-          <div
-            onClick={() => navigate('/set-times/saturday')}
-            className="card-interactive cursor-pointer px-6 py-8 text-xl font-semibold"
-          >
-            Saturday
+
+          <div className="card overflow-hidden">
+            <div className="border-b border-white/10 bg-white/5 px-6 py-4 text-center">
+              <h2 className="text-xl font-semibold">Saturday</h2>
+            </div>
+            <img
+              src="/saturday.jpg"
+              alt="Saturday set times"
+              className="w-full"
+            />
           </div>
-          <div
-            onClick={() => navigate('/set-times/sunday')}
-            className="card-interactive cursor-pointer px-6 py-8 text-xl font-semibold"
-          >
-            Sunday
+
+          <div className="card overflow-hidden">
+            <div className="border-b border-white/10 bg-white/5 px-6 py-4 text-center">
+              <h2 className="text-xl font-semibold">Sunday</h2>
+            </div>
+            <img
+              src="/sunday.jpg"
+              alt="Sunday set times"
+              className="w-full"
+            />
           </div>
         </div>
       </div>
