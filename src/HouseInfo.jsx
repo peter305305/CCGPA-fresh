@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import TopNav from './TopNav';
 
 const images = [
   "/gallery1.jpg",
@@ -9,7 +9,6 @@ const images = [
 
 export default function HouseInfo() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,12 +20,8 @@ export default function HouseInfo() {
   return (
     <div className="page-shell animate-fade">
       <div className="page-container">
+        <TopNav />
         <div className="mb-8 text-center">
-          <div className="mb-4 flex justify-center">
-            <button className="ghost-button" onClick={() => navigate('/dashboard')}>
-              ← Back to dashboard
-            </button>
-          </div>
           <h1 className="page-title">🏠 House Info</h1>
           <p className="page-subtitle">Tap the address for directions and explore the gallery.</p>
         </div>
@@ -52,6 +47,63 @@ export default function HouseInfo() {
             allowFullScreen
             loading="lazy"
           />
+        </div>
+
+        <div className="mb-8 grid gap-4 sm:grid-cols-2">
+          <div className="card p-6">
+            <p className="card-header">Amenities</p>
+            <h2 className="card-title">Curated for comfort</h2>
+            <ul className="mt-4 space-y-2 text-sm text-indigo-100/80">
+              <li>Tennis court</li>
+              <li>Canoes</li>
+              <li>Stand up paddleboarding</li>
+              <li>Pool</li>
+              <li>Beach volleyball</li>
+              <li>Pickleball court</li>
+              <li>Movie theater</li>
+              <li>Indoor spa</li>
+              <li>Sauna</li>
+              <li>Billiards</li>
+              <li>Air hockey</li>
+              <li>Ping pong</li>
+              <li>Foosball</li>
+            </ul>
+          </div>
+
+          <div className="card p-6">
+            <p className="card-header">House Notes</p>
+            <h2 className="card-title">Quiet luxury, clear rules</h2>
+            <ul className="mt-4 space-y-2 text-sm text-indigo-100/80">
+              <li>Quiet hours: 2:00 AM – 8:00 AM</li>
+              <li>Pool closes at 2:00 AM</li>
+              <li>Keep doors locked when leaving</li>
+              <li>Concierge handles all requests</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mb-8 grid gap-4 sm:grid-cols-2">
+          <div className="card p-6">
+            <p className="card-header">Dining Menu</p>
+            <h2 className="card-title">Dinner</h2>
+            <ul className="mt-4 space-y-2 text-sm text-indigo-100/80">
+              <li>Seared salmon with citrus beurre blanc</li>
+              <li>Filet mignon with truffle demi-glace</li>
+              <li>Wild mushroom risotto</li>
+              <li>Heirloom garden salad with champagne vinaigrette</li>
+            </ul>
+          </div>
+
+          <div className="card p-6">
+            <p className="card-header">Late Night</p>
+            <h2 className="card-title">Finger foods</h2>
+            <ul className="mt-4 space-y-2 text-sm text-indigo-100/80">
+              <li>Sliders</li>
+              <li>Pizza</li>
+              <li>Quesadillas</li>
+              <li>Fries</li>
+            </ul>
+          </div>
         </div>
 
         <div className="card mx-auto max-w-3xl overflow-hidden">

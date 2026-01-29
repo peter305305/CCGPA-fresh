@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
+import TopNav from './TopNav';
 
 const imageMap = {
   friday: '/friday.jpg',
@@ -14,6 +15,7 @@ export default function SetTimesImage() {
   return (
     <div className="page-shell animate-fade">
       <div className="page-container text-center">
+        <TopNav />
         <div className="mb-4 flex justify-center">
           <button className="ghost-button" onClick={() => navigate('/set-times')}>
             ← Back to set times

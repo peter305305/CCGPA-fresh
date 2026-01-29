@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import TopNav from './TopNav';
 
 export default function SetTimes() {
   const navigate = useNavigate();
@@ -6,12 +7,8 @@ export default function SetTimes() {
   return (
     <div className="page-shell animate-fade">
       <div className="page-container text-center">
+        <TopNav />
         <div className="mb-8">
-          <div className="mb-4 flex justify-center">
-            <button className="ghost-button" onClick={() => navigate('/dashboard')}>
-              ← Back to dashboard
-            </button>
-          </div>
           <h1 className="page-title">🎶 Set Times</h1>
           <p className="page-subtitle">Pick a day to see the latest lineup.</p>
         </div>

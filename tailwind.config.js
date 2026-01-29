@@ -8,6 +8,17 @@ export default {
           800: "#161627",
           700: "#1f2133",
         },
+        luxe: {
+          900: "#0b0a0f",
+          800: "#14121c",
+          700: "#1c1a27",
+          600: "#2a2538",
+        },
+        gold: {
+          500: "#f5c87a",
+          400: "#f9d79b",
+          300: "#fbe6c3",
+        },
         neon: {
           500: "#7c3aed",
           400: "#8b5cf6",
@@ -19,15 +30,18 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Helvetica Neue', 'sans-serif']
+        sans: ['Inter', 'Helvetica Neue', 'sans-serif'],
+        display: ['"Playfair Display"', 'serif'],
       },
       boxShadow: {
         soft: "0 12px 32px rgba(15, 15, 26, 0.25)",
         glow: "0 0 0 1px rgba(139, 92, 246, 0.4), 0 12px 30px rgba(34, 211, 238, 0.2)",
+        luxe: "0 30px 60px rgba(10, 10, 16, 0.45)",
       },
       backgroundImage: {
-        "hero-gradient": "radial-gradient(circle at top, rgba(139, 92, 246, 0.25), rgba(15, 15, 26, 0.9))",
-        "card-sheen": "linear-gradient(135deg, rgba(139, 92, 246, 0.18), rgba(34, 211, 238, 0.08))",
+        "hero-gradient": "radial-gradient(circle at top, rgba(245, 200, 122, 0.2), rgba(12, 10, 18, 0.95))",
+        "card-sheen": "linear-gradient(135deg, rgba(245, 200, 122, 0.12), rgba(34, 211, 238, 0.08))",
+        "luxe-glow": "radial-gradient(circle at top, rgba(249, 215, 155, 0.18), transparent 60%)",
       },
       animation: {
         fade: "fadeIn 0.8s ease-out forwards",

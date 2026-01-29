@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from './firebase';
 import { doc, getDoc } from 'firebase/firestore';
+import TopNav from './TopNav';
 
 export default function GuestDashboard({ guest }) {
   const [firestoreGuest, setFirestoreGuest] = useState(null);
@@ -45,6 +46,7 @@ export default function GuestDashboard({ guest }) {
   return (
     <div className="page-shell animate-fade">
       <div className="page-container">
+        <TopNav />
         <div className="mb-10 flex flex-col gap-4">
           <div className="flex flex-wrap items-center gap-3">
             <span className="chip">Weekend Two</span>
@@ -56,7 +58,42 @@ export default function GuestDashboard({ guest }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div className="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
+          <div className="card p-6">
+            <p className="card-header">Concierge Desk</p>
+            <h2 className="card-title">At-your-service, hotel-level support</h2>
+            <p className="mt-3 text-sm text-indigo-100/80">
+              Status: <span className="text-gold-400">Online</span> · Typical response under 5 minutes
+            </p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <a className="cta-button" href="sms:+447846763369">Message Concierge</a>
+              <a className="ghost-button" href="sms:+17865255271">Technical Support</a>
+            </div>
+          </div>
+
+          <div className="card p-6">
+            <p className="card-header">Today’s Itinerary</p>
+            <h2 className="card-title">Signature moments</h2>
+            <div className="mt-4 space-y-3 text-sm text-indigo-100/80">
+              <div>
+                <p className="font-semibold text-white">3:00 PM</p>
+                <p>Party bus departure</p>
+              </div>
+              <div className="lux-divider" />
+              <div>
+                <p className="font-semibold text-white">10:00 AM – 1:00 PM</p>
+                <p>Brunch service in residence</p>
+              </div>
+              <div className="lux-divider" />
+              <div>
+                <p className="font-semibold text-white">1:00 AM – 3:00 AM</p>
+                <p>Late-night bites</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div
             className="card-interactive flex h-36 items-center justify-center text-center text-lg font-semibold"
             onClick={() => navigate('/house-info')}

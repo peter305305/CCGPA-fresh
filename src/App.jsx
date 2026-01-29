@@ -29,13 +29,13 @@ function Landing({ setUser, setIsAdmin }) {
       <div className="w-full max-w-2xl rounded-3xl border border-white/10 bg-white/5 p-8 shadow-soft backdrop-blur-md sm:p-10">
         <div className="flex flex-col gap-6 text-center">
           <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-indigo-100/80">
-            Weekend Two
-            <span className="h-1.5 w-1.5 rounded-full bg-glow-300 animate-pulse" />
+            Private Residence
+            <span className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
           </div>
           <div>
-            <h1 className="text-3xl font-semibold sm:text-5xl">Welcome to Coachella</h1>
-            <p className="mt-3 text-base text-indigo-100/80 sm:text-lg">
-              Your bold, modern hub for schedules, house info, and on-site support.
+            <h1 className="text-3xl font-semibold sm:text-5xl font-display">Coachella Welcome Suite</h1>
+            <p className="mt-3 text-base text-indigo-100/70 sm:text-lg">
+              A luxury hub for concierge services, schedules, and residence details.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
@@ -50,9 +50,9 @@ function Landing({ setUser, setIsAdmin }) {
             </button>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-indigo-100/70">
-            <span className="chip">House updates</span>
-            <span className="chip">Set times</span>
-            <span className="chip">24/7 concierge</span>
+            <span className="chip">Concierge service</span>
+            <span className="chip">Private transport</span>
+            <span className="chip">VIP schedule</span>
           </div>
         </div>
       </div>

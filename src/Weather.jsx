@@ -1,16 +1,11 @@
-import { useNavigate } from 'react-router-dom';
+import TopNav from './TopNav';
 
 export default function Weather() {
-  const navigate = useNavigate();
   return (
     <div className="page-shell animate-fade">
       <div className="page-container">
+        <TopNav />
         <div className="mb-6">
-          <div className="mb-4">
-            <button className="ghost-button" onClick={() => navigate('/dashboard')}>
-              ← Back to dashboard
-            </button>
-          </div>
           <h1 className="page-title">☀️ Coachella Weather</h1>
           <p className="page-subtitle">Live forecast to plan your weekend looks.</p>
         </div>
