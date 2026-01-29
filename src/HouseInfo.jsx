@@ -26,6 +26,32 @@ export default function HouseInfo() {
           <p className="page-subtitle">Tap the address for directions and explore the gallery.</p>
         </div>
 
+        <div className="card mb-8 overflow-hidden">
+          <div className="relative">
+            <img
+              src={images[currentIndex]}
+              alt={`Gallery ${currentIndex + 1}`}
+              className="h-80 w-full object-cover transition-all duration-700"
+            />
+            <button
+              type="button"
+              onClick={() => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)}
+              className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-black/40 px-3 py-2 text-lg text-white transition hover:bg-black/60"
+              aria-label="Previous image"
+            >
+              ←
+            </button>
+            <button
+              type="button"
+              onClick={() => setCurrentIndex((prev) => (prev + 1) % images.length)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-black/40 px-3 py-2 text-lg text-white transition hover:bg-black/60"
+              aria-label="Next image"
+            >
+              →
+            </button>
+          </div>
+        </div>
+
         <div className="card mb-6 p-5 text-center">
           <a
             href="https://www.google.com/maps/place/1+St.+Petersburg+Court,+Rancho+Mirage,+CA+92270"
@@ -35,18 +61,6 @@ export default function HouseInfo() {
           >
             1 St. Petersburg Court, Rancho Mirage, CA 92270
           </a>
-        </div>
-
-        <div className="card mb-8 overflow-hidden">
-          <iframe
-            title="map"
-            src="https://maps.google.com/maps?q=1%20St.%20Petersburg%20Court,%20Rancho%20Mirage,%20CA%2092270&t=&z=15&ie=UTF8&iwloc=&output=embed"
-            width="100%"
-            height="320"
-            className="w-full"
-            allowFullScreen
-            loading="lazy"
-          />
         </div>
 
         <div className="mb-8 grid gap-4 sm:grid-cols-2">
@@ -82,11 +96,15 @@ export default function HouseInfo() {
           </div>
         </div>
 
-        <div className="card mx-auto max-w-3xl overflow-hidden">
-          <img
-            src={images[currentIndex]}
-            alt={`Gallery ${currentIndex + 1}`}
-            className="h-80 w-full object-cover transition-all duration-700"
+        <div className="card mb-8 overflow-hidden">
+          <iframe
+            title="map"
+            src="https://maps.google.com/maps?q=1%20St.%20Petersburg%20Court,%20Rancho%20Mirage,%20CA%2092270&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="320"
+            className="w-full"
+            allowFullScreen
+            loading="lazy"
           />
         </div>
       </div>
