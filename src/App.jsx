@@ -6,6 +6,7 @@ import Weather from './Weather';
 import HouseInfo from './HouseInfo';
 import SetTimes from './SetTimes';
 import SetTimesImage from './SetTimesImage'; // 🔥 import the new page for each day's image
+import Dining from './Dining';
 
 function Landing({ setUser, setIsAdmin }) {
   const [input, setInput] = useState('');
@@ -74,6 +75,7 @@ export default function App() {
         <Route path="/house-info" element={<HouseInfo />} />
         <Route path="/set-times" element={<SetTimes />} /> {/* ✅ New route for set times overview */}
         <Route path="/set-times/:day" element={<SetTimesImage />} /> {/* ✅ Dynamic image page */}
+        <Route path="/dining" element={<Dining guest={user} />} />
       </Routes>
     </Router>
   );

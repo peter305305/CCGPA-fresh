@@ -82,30 +82,6 @@ export default function HouseInfo() {
           </div>
         </div>
 
-        <div className="mb-8 grid gap-4 sm:grid-cols-2">
-          <div className="card p-6">
-            <p className="card-header">Dining Menu</p>
-            <h2 className="card-title">Dinner</h2>
-            <ul className="mt-4 space-y-2 text-sm text-indigo-100/80">
-              <li>Seared salmon with citrus beurre blanc</li>
-              <li>Filet mignon with truffle demi-glace</li>
-              <li>Wild mushroom risotto</li>
-              <li>Heirloom garden salad with champagne vinaigrette</li>
-            </ul>
-          </div>
-
-          <div className="card p-6">
-            <p className="card-header">Late Night</p>
-            <h2 className="card-title">Finger foods</h2>
-            <ul className="mt-4 space-y-2 text-sm text-indigo-100/80">
-              <li>Sliders</li>
-              <li>Pizza</li>
-              <li>Quesadillas</li>
-              <li>Fries</li>
-            </ul>
-          </div>
-        </div>
-
         <div className="card mx-auto max-w-3xl overflow-hidden">
           <img
             src={images[currentIndex]}

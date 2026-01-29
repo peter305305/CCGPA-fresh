@@ -133,10 +133,15 @@ export default function GuestDashboard({ guest }) {
             )}
           </div>
 
-          <div className="card p-5">
+          <div
+            className="card-interactive p-5"
+            onClick={() => navigate('/dining')}
+          >
             <p className="card-header">Dining</p>
             <h2 className="card-title">🍳 Food</h2>
-            <p className="mt-3 text-sm text-indigo-100/80">Brunch: 10 AM – 1 PM<br />Late-Night: 1–3 AM</p>
+            <p className="mt-3 text-sm text-indigo-100/80">
+              Brunch: 10 AM – 1 PM<br />Late-Night: 1–3 AM
+            </p>
           </div>
 
           <div className="card p-5">
