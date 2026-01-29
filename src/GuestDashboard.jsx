@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { db } from './firebase';
 import { doc, getDoc } from 'firebase/firestore';
 
 export default function GuestDashboard({ guest }) {
   const [firestoreGuest, setFirestoreGuest] = useState(null);
   const [showServices, setShowServices] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchGuest() {
@@ -20,78 +22,118 @@ export default function GuestDashboard({ guest }) {
     fetchGuest();
   }, [guest]);
 
-  if (!firestoreGuest) return <div className="p-6">Guest not found.</div>;
+  if (!firestoreGuest) {
+    return (
+      <div className="page-shell animate-fade">
+        <div className="page-container text-center">
+          <h1 className="page-title">Guest not found</h1>
+          <p className="page-subtitle">Please double-check your name and try again.</p>
+          <div className="mt-6 flex justify-center">
+            <button className="ghost-button" onClick={() => navigate('/')}>
+              ← Back to login
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const renderField = (value) => (
     value ? value : <span className="italic text-red-600">Please check back later</span>
   );
 
   return (
-    <div className="p-6 animate-fade">
-      <h1 className="text-2xl font-bold mb-4">Hi {firestoreGuest.name || 'Guest'}! 👋</h1>
-      <p className="mb-6">Welcome to Coachella Weekend Two – April 18–21!</p>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div
-          className="border p-6 rounded-xl shadow cursor-pointer text-center text-lg font-bold flex items-center justify-center h-32 hover:shadow-lg hover:scale-[1.02] transition-transform duration-300"
-          onClick={() => window.location.href = "/house-info"}
-        >
-          🏠 House Info
+    <div className="page-shell animate-fade">
+      <div className="page-container">
+        <div className="mb-10 flex flex-col gap-4">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="chip">Weekend Two</span>
+            <span className="chip">April 18–21</span>
+          </div>
+          <div>
+            <h1 className="page-title">Hi {firestoreGuest.name || 'Guest'} 👋</h1>
+            <p className="page-subtitle">Here’s everything you need, in one bold, modern dashboard.</p>
+          </div>
         </div>
 
-        <div className="border p-4 rounded-xl shadow hover:shadow-md transition duration-300">
-          <h2 className="font-bold mb-2">🛏 Your Room</h2>
-          <p>
-            {renderField(firestoreGuest.room)}<br />
-            Arrival: {renderField(firestoreGuest.arrival)}<br />
-            Departure: {renderField(firestoreGuest.departure)}
-          </p>
-        </div>
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div
+            className="card-interactive flex h-36 items-center justify-center text-center text-lg font-semibold"
+            onClick={() => navigate('/house-info')}
+          >
+            🏠 House Info
+          </div>
 
-        <div
-          className="border p-6 rounded-xl shadow cursor-pointer text-center text-lg font-bold flex flex-col items-center justify-center hover:shadow-lg hover:scale-[1.02] transition-transform duration-300"
-          onClick={() => setShowServices(!showServices)}
-        >
-          🧼 Services
-          {showServices && (
-            <div className="space-y-2 mt-4 text-sm font-normal w-full">
-              <div className="border rounded p-2 w-full">🧺 Laundry – TBD</div>
-              <div className="border rounded p-2 w-full">
-                🧹 Cleaning<br />Cleaning Hours: 3 PM – 7 PM daily<br />(Please leave your room door unlocked during this window)
+          <div className="card p-5">
+            <p className="card-header">Your stay</p>
+            <h2 className="card-title">🛏 Your Room</h2>
+            <p className="mt-3 text-sm text-indigo-100/80">
+              {renderField(firestoreGuest.room)}<br />
+              Arrival: {renderField(firestoreGuest.arrival)}<br />
+              Departure: {renderField(firestoreGuest.departure)}
+            </p>
+          </div>
+
+          <div
+            className="card-interactive flex flex-col items-center justify-center p-5 text-center"
+            onClick={() => setShowServices(!showServices)}
+          >
+            <p className="card-header">On-demand</p>
+            <h2 className="card-title">🧼 Services</h2>
+            {showServices && (
+              <div className="mt-4 space-y-2 text-sm text-indigo-100/80">
+                <div className="rounded-xl border border-white/10 bg-white/10 p-3">🧺 Laundry – TBD</div>
+                <div className="rounded-xl border border-white/10 bg-white/10 p-3">
+                  🧹 Cleaning<br />Cleaning Hours: 3 PM – 7 PM daily<br />(Please leave your room door unlocked during this window)
+                </div>
+                <div className="rounded-xl border border-white/10 bg-white/10 p-3">
+                  <a href="sms:+17867422111" className="text-glow-300 underline">📲 Need another request?</a>
+                </div>
               </div>
-              <div className="border rounded p-2 w-full">
-                <a href="sms:+17867422111" className="text-blue-600 underline">📲 Need another request?</a>
-              </div>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
 
-        <div className="border p-4 rounded-xl shadow hover:shadow-md transition duration-300">
-          <h2 className="font-bold mb-2">🍳 Food</h2>
-          <p>Brunch: 10 AM – 1 PM<br />Late-Night: 1–3 AM</p>
-        </div>
+          <div className="card p-5">
+            <p className="card-header">Dining</p>
+            <h2 className="card-title">🍳 Food</h2>
+            <p className="mt-3 text-sm text-indigo-100/80">Brunch: 10 AM – 1 PM<br />Late-Night: 1–3 AM</p>
+          </div>
 
-        <div className="border p-4 rounded-xl shadow hover:shadow-md transition duration-300">
-          <h2 className="font-bold mb-2">🚐 Transport</h2>
-          <p>Party Bus: 3 PM<br />Private Car: <a href="sms:+17867422111" className="text-blue-600 underline">Click here!</a> 1hr ahead</p>
-        </div>
+          <div className="card p-5">
+            <p className="card-header">Getting around</p>
+            <h2 className="card-title">🚐 Transport</h2>
+            <p className="mt-3 text-sm text-indigo-100/80">
+              Party Bus: 3 PM<br />
+              Private Car: <a href="sms:+17867422111" className="text-glow-300 underline">Click here!</a> 1hr ahead
+            </p>
+          </div>
 
-        <div className="border p-4 rounded-xl shadow hover:shadow-md transition duration-300">
-          <h2 className="font-bold mb-2">☀️ Weather</h2>
-          <a href="https://weather.com/weather/tenday/l/92270" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Check weather forecast</a>
-        </div>
+          <div className="card p-5">
+            <p className="card-header">Forecast</p>
+            <h2 className="card-title">☀️ Weather</h2>
+            <a
+              href="https://weather.com/weather/tenday/l/92270"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-flex text-sm font-semibold text-glow-300 underline"
+            >
+              Check weather forecast
+            </a>
+          </div>
 
-        <div className="border p-6 rounded-xl shadow cursor-pointer text-center text-lg font-bold flex items-center justify-center h-32 col-span-full hover:shadow-lg hover:scale-[1.02] transition-transform duration-300"
-          onClick={() => window.location.href = "/set-times"}
-        >
-          🎶 Set Times
-        </div>
+          <div
+            className="card-interactive col-span-full flex h-36 items-center justify-center text-center text-lg font-semibold"
+            onClick={() => navigate('/set-times')}
+          >
+            🎶 Set Times
+          </div>
 
-        <div
-          className="border p-6 rounded-xl shadow col-span-full text-center text-lg font-bold cursor-pointer flex items-center justify-center h-32 hover:shadow-lg hover:scale-[1.02] transition-transform duration-300"
-          onClick={() => window.location.href = "sms:+17867422111"}
-        >
-          📲 Need something else?
+          <div
+            className="card-interactive col-span-full flex h-28 items-center justify-center text-center text-lg font-semibold"
+            onClick={() => window.location.href = "sms:+17867422111"}
+          >
+            📲 Need something else?
+          </div>
         </div>
       </div>
     </div>

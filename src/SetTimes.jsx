@@ -4,26 +4,36 @@ export default function SetTimes() {
   const navigate = useNavigate();
 
   return (
-    <div className="p-6 animate-fade text-center">
-      <h1 className="text-3xl font-bold mb-6">🎶 Set Times</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div
-          onClick={() => navigate('/set-times/friday')}
-          className="cursor-pointer border p-6 rounded-xl shadow text-xl font-bold hover:shadow-lg hover:scale-105 transition-transform"
-        >
-          Friday
+    <div className="page-shell animate-fade">
+      <div className="page-container text-center">
+        <div className="mb-8">
+          <div className="mb-4 flex justify-center">
+            <button className="ghost-button" onClick={() => navigate('/dashboard')}>
+              ← Back to dashboard
+            </button>
+          </div>
+          <h1 className="page-title">🎶 Set Times</h1>
+          <p className="page-subtitle">Pick a day to see the latest lineup.</p>
         </div>
-        <div
-          onClick={() => navigate('/set-times/saturday')}
-          className="cursor-pointer border p-6 rounded-xl shadow text-xl font-bold hover:shadow-lg hover:scale-105 transition-transform"
-        >
-          Saturday
-        </div>
-        <div
-          onClick={() => navigate('/set-times/sunday')}
-          className="cursor-pointer border p-6 rounded-xl shadow text-xl font-bold hover:shadow-lg hover:scale-105 transition-transform"
-        >
-          Sunday
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div
+            onClick={() => navigate('/set-times/friday')}
+            className="card-interactive cursor-pointer px-6 py-8 text-xl font-semibold"
+          >
+            Friday
+          </div>
+          <div
+            onClick={() => navigate('/set-times/saturday')}
+            className="card-interactive cursor-pointer px-6 py-8 text-xl font-semibold"
+          >
+            Saturday
+          </div>
+          <div
+            onClick={() => navigate('/set-times/sunday')}
+            className="card-interactive cursor-pointer px-6 py-8 text-xl font-semibold"
+          >
+            Sunday
+          </div>
         </div>
       </div>
     </div>

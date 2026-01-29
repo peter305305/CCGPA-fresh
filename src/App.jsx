@@ -25,18 +25,36 @@ function Landing({ setUser, setIsAdmin }) {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 animate-fade">
-      <div className="bg-white bg-opacity-90 p-6 rounded-xl shadow-xl max-w-sm w-full text-center">
-        <h1 className="text-2xl font-semibold mb-4">Welcome to Coachella 🌴</h1>
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter your name"
-          className="border p-2 w-full rounded mb-4"
-        />
-        <button className="bg-black text-white py-2 px-4 rounded w-full" onClick={handleLogin}>
-          Enter
-        </button>
+    <div className="page-shell flex items-center justify-center px-4 animate-fade">
+      <div className="w-full max-w-2xl rounded-3xl border border-white/10 bg-white/5 p-8 shadow-soft backdrop-blur-md sm:p-10">
+        <div className="flex flex-col gap-6 text-center">
+          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-indigo-100/80">
+            Weekend Two
+            <span className="h-1.5 w-1.5 rounded-full bg-glow-300 animate-pulse" />
+          </div>
+          <div>
+            <h1 className="text-3xl font-semibold sm:text-5xl">Welcome to Coachella</h1>
+            <p className="mt-3 text-base text-indigo-100/80 sm:text-lg">
+              Your bold, modern hub for schedules, house info, and on-site support.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Enter your name"
+              className="w-full rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-base text-white placeholder:text-indigo-100/60 focus:border-neon-300 focus:outline-none focus:ring-2 focus:ring-neon-400/40"
+            />
+            <button className="cta-button w-full sm:w-auto" onClick={handleLogin}>
+              Enter
+            </button>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-indigo-100/70">
+            <span className="chip">House updates</span>
+            <span className="chip">Set times</span>
+            <span className="chip">24/7 concierge</span>
+          </div>
+        </div>
       </div>
     </div>
   );

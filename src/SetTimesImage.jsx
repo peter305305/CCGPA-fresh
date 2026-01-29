@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const imageMap = {
   friday: '/friday.jpg',
@@ -9,19 +9,30 @@ const imageMap = {
 export default function SetTimesImage() {
   const { day } = useParams();
   const imageSrc = imageMap[day];
+  const navigate = useNavigate();
 
   return (
-    <div className="p-6 animate-fade text-center">
-      <h1 className="text-2xl font-bold capitalize mb-4">{day} Set Times</h1>
-      {imageSrc ? (
-        <img
-          src={imageSrc}
-          alt={`${day} set times`}
-          className="mx-auto max-w-full rounded-xl shadow-lg"
-        />
-      ) : (
-        <p className="text-red-500">Set times not available for this day.</p>
-      )}
+    <div className="page-shell animate-fade">
+      <div className="page-container text-center">
+        <div className="mb-4 flex justify-center">
+          <button className="ghost-button" onClick={() => navigate('/set-times')}>
+            ← Back to set times
+          </button>
+        </div>
+        <h1 className="page-title capitalize">{day} Set Times</h1>
+        <p className="page-subtitle">Latest schedule, optimized for mobile.</p>
+        {imageSrc ? (
+          <div className="card mt-6 overflow-hidden">
+            <img
+              src={imageSrc}
+              alt={`${day} set times`}
+              className="mx-auto w-full max-w-4xl rounded-2xl"
+            />
+          </div>
+        ) : (
+          <p className="mt-6 text-red-300">Set times not available for this day.</p>
+        )}
+      </div>
     </div>
   );
 }

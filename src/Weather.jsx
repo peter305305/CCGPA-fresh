@@ -1,12 +1,27 @@
+import { useNavigate } from 'react-router-dom';
+
 export default function Weather() {
+  const navigate = useNavigate();
   return (
-    <div className="p-6 animate-fade">
-      <h1 className="text-2xl font-bold mb-4">☀️ Coachella Weather</h1>
-      <iframe
-        title="Weather"
-        src="https://forecast7.com/en/33d78n116d40/rancho-mirage/?unit=us"
-        className="w-full h-96 border rounded"
-      />
+    <div className="page-shell animate-fade">
+      <div className="page-container">
+        <div className="mb-6">
+          <div className="mb-4">
+            <button className="ghost-button" onClick={() => navigate('/dashboard')}>
+              ← Back to dashboard
+            </button>
+          </div>
+          <h1 className="page-title">☀️ Coachella Weather</h1>
+          <p className="page-subtitle">Live forecast to plan your weekend looks.</p>
+        </div>
+        <div className="card overflow-hidden">
+          <iframe
+            title="Weather"
+            src="https://forecast7.com/en/33d78n116d40/rancho-mirage/?unit=us"
+            className="h-96 w-full"
+          />
+        </div>
+      </div>
     </div>
   );
 }
