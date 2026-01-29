@@ -81,7 +81,10 @@ export default function AdminDashboard({ guest }) {
                   🧹 Cleaning<br />Cleaning Hours: 3 PM – 7 PM daily<br />(Please leave your room door unlocked during this window)
                 </div>
                 <div className="rounded-xl border border-white/10 bg-white/10 p-3">
-                  <a href="sms:+17867422111" className="text-glow-300 underline">📲 Need another request?</a>
+                  <a href="sms:+447846763369" className="text-glow-300 underline">📲 Need another request?</a>
+                </div>
+                <div className="rounded-xl border border-white/10 bg-white/10 p-3">
+                  <a href="sms:+17865255271" className="text-glow-300 underline">🧰 Technical Support?</a>
                 </div>
               </div>
             )}
@@ -98,7 +101,7 @@ export default function AdminDashboard({ guest }) {
             <h2 className="card-title">🚐 Transport</h2>
             <p className="mt-3 text-sm text-indigo-100/80">
               Party Bus: 3 PM<br />
-              Private Car: <a href="sms:+17867422111" className="text-glow-300 underline">Click here!</a> 1hr ahead
+              Private Car: <a href="sms:+16452219584" className="text-glow-300 underline">Click here!</a> 1hr ahead
             </p>
           </div>
 
@@ -117,7 +120,7 @@ export default function AdminDashboard({ guest }) {
 
           <div
             className="card-interactive col-span-full flex h-28 items-center justify-center text-center text-lg font-semibold"
-            onClick={() => window.location.href = "sms:+17867422111"}
+            onClick={() => window.location.href = "sms:+447846763369"}
           >
             📲 Need something else?
           </div>
